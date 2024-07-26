@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Upload Plateform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background: #4CAF50;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 2rem 0;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .feature, .functionality {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .upload-section, .approval-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .upload-section input[type="file"] {
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .upload-section button, .approval-section button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-section button:hover, .approval-section button:hover {
+            background: #45a049;
+        }
+        footer {
+            background: #4CAF50;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Youtube Upload Plateform</h1>
+        <p>Streamline Your Video Management and Approval Process</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>About Us</h2>
+            <p>Welcome to Youtube Upload Plateform, where we simplify video management. Our platform allows video editors to upload content, which then waits for user approval. Once approved, the video is automatically uploaded to YouTube.</p>
+        </section>
+
+        <section class="section">
+            <h2>Features</h2>
+            <div class="feature">
+                <h3>Video Upload by Editors</h3>
+                <p>Editors can easily upload videos to our platform. These videos are securely stored and prepared for review.</p>
+            </div>
+            <div class="feature">
+                <h3>Approval Workflow</h3>
+                <p>After uploading, videos await approval from users. Users are notified to review and approve or reject the video.</p>
+            </div>
+            <div class="feature">
+                <h3>Automated YouTube Upload</h3>
+                <p>Once a video is approved by the user, our platform handles the upload process to YouTube, ensuring a seamless experience.</p>
+            </div>
+            <div class="feature">
+                <h3>Real-Time Notifications</h3>
+                <p>Get real-time notifications about the status of video uploads and approvals, keeping you informed throughout the process.</p>
+            </div>
+        </section>
+
+        <section class="section upload-section">
+            <h2>Upload Video</h2>
+            <input type="file" id="videoUpload" accept="video/*">
+            <button onclick="uploadVideo()">Upload Video</button>
+            <p id="uploadStatus"></p>
+        </section>
+
+        <section class="section approval-section">
+            <h2>Video Approval</h2>
+            <p>Pending video uploads for your review:</p>
+            <!-- Example of how pending videos might be listed -->
+            <ul id="pendingVideos">
+                <!-- Placeholder list item, actual items should be dynamically added -->
+                <li>Video 1 <button onclick="approveVideo('Video 1')">Approve</button> <button onclick="rejectVideo('Video 1')">Reject</button></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Functionality</h2>
+            <div class="functionality">
+                <h3>Editor Dashboard</h3>
+                <p>Editors have access to a user-friendly dashboard where they can upload, manage, and track their video content.</p>
+            </div>
+            <div class="functionality">
+                <h3>User Approval Interface</h3>
+                <p>Users can review uploaded videos through a dedicated interface, approve or reject them, and provide feedback if necessary.</p>
+            </div>
+            <div class="functionality">
+                <h3>Automated Approval Process</h3>
+                <p>Our platform automates the workflow from video upload to approval and final upload to YouTube, streamlining the entire process.</p>
+            </div>
+            <div class="functionality">
+                <h3>Analytics and Reporting</h3>
+                <p>Access detailed analytics and reports on video uploads, user approvals, and overall performance to help optimize your content management.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Legal Information</h2>
+            <p>Please review our <a href="[Privacy Policy URL]">Privacy Policy</a> and <a href="[Terms of Service URL]">Terms of Service</a> to understand how we handle your data and the terms of using our platform.</p>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2024 Youtube Upload Plateform. All Rights Reserved.
+    </footer>
+
+    <script>
+        function uploadVideo() {
+            const fileInput = document.getElementById('videoUpload');
+            const uploadStatus = document.getElementById('uploadStatus');
+
+            if (fileInput.files.length === 0) {
+                uploadStatus.textContent = 'Please select a video file to upload.';
+                return;
+            }
+
+            // Simulate video upload
+            uploadStatus.textContent = 'Uploading video...';
+
+            // This is where you would typically handle the file upload
+            // You can use FormData and AJAX to send the file to your server
+
+            setTimeout(() => {
+                uploadStatus.textContent = 'Video uploaded successfully!';
+                // Update the pending videos list (mock data here)
+                const pendingVideos = document.getElementById('pendingVideos');
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `New Video <button onclick="approveVideo('New Video')">Approve</button> <button onclick="rejectVideo('New Video')">Reject</button>`;
+                pendingVideos.appendChild(listItem);
+            }, 2000);
+        }
+
+        function approveVideo(videoTitle) {
+            alert(`${videoTitle} has been approved and will be uploaded to YouTube.`);
+            // Implement actual approval logic here
+        }
+
+        function rejectVideo(videoTitle) {
+            alert(`${videoTitle} has been rejected.`);
+            // Implement actual rejection logic here
+        }
+    </script>
+</body>
+</html>
